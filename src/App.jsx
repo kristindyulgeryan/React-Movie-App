@@ -13,7 +13,7 @@ const API_KEY =import.meta.env.VITE_TMBD_API_KEY;
 const API_OPTIONS = {
   method: 'GET',
   headers: {
-    accept: 'aplication/json',
+    accept: 'application/json',
     Authorization: `Bearer ${API_KEY}`
   }
 
@@ -53,7 +53,11 @@ const App = ()=> {
 
       setMovieList(data.results || [])
 
-      updateSearchCount()
+       
+if(query && data.results.length > 0){
+  await updateSearchCount(query, data.results[0])
+}
+
     } catch(error){
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later.')
