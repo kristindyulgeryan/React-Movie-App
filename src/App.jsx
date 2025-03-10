@@ -5,7 +5,6 @@ import MovieCard from "./components/MovieCard.jsx";
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "./appwrite.js";
 
-
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
 const API_KEY =import.meta.env.VITE_TMBD_API_KEY;
@@ -98,7 +97,7 @@ return(
   <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 </header>
 
-{trendingMovies.length > 0 && (
+{Array.isArray(trendingMovies) && trendingMovies.length > 0 && (
   <section className="trending">
     <h2>Trending Movies</h2>
     <ul>
